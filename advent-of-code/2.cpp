@@ -8,34 +8,35 @@
 
 using namespace std;
 	
-int stoi(const string& s) {
+int to_int(const string& s) {
 	stringstream ss;
 	ss << s;
 	int res;
 	ss >> res;
-	ss.close();
+	ss.clear();
 	return res;
 }
 int main(){
+	int t; cin >> t;
 
 	int v = 0;
 	int l;
 	int b[3];
 	int acc;
 	int xpos;
-	for (int i=0; i < 1000; i++) {
+	for (int i=0; i < t; i++) {
 		string p; cin >> p;
 		l = p.length();
 		acc = 0;
 		xpos = -1;
 		for (int j=0; j < l; j++) {
 			if (p[j] == 'x') {
-				b[acc] = stoi(p.substr(xpos+1,j-(xpos+1)));
+				b[acc] = to_int(p.substr(xpos+1,j-(xpos+1)));
 				acc++;
 				xpos = j;
 			}
 			if (acc == 2) {
-				b[2] = stoi(p.substr(xpos+1,l-(xpos+1)));
+				b[2] = to_int(p.substr(xpos+1,l-(xpos+1)));
 				break;
 			}
 		}
